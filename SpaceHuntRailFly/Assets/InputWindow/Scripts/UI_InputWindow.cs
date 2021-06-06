@@ -24,7 +24,7 @@ public class UI_InputWindow : MonoBehaviour {
 
     private Button_UI okBtn;
     private Button_UI cancelBtn;
-    private TextMeshProUGUI titleText;
+
     private TMP_InputField inputField;
 
     private void Awake() {
@@ -32,7 +32,7 @@ public class UI_InputWindow : MonoBehaviour {
 
         okBtn = transform.Find("okBtn").GetComponent<Button_UI>();
         cancelBtn = transform.Find("cancelBtn").GetComponent<Button_UI>();
-        titleText = transform.Find("titleText").GetComponent<TextMeshProUGUI>();
+
         inputField = transform.Find("inputField").GetComponent<TMP_InputField>();
 
         Hide();
@@ -47,11 +47,11 @@ public class UI_InputWindow : MonoBehaviour {
         }
     }
 
-    private void Show(string titleString, string inputString, string validCharacters, int characterLimit, Action onCancel, Action<string> onOk) {
+    private void Show(string inputString, string validCharacters, int characterLimit, Action onCancel, Action<string> onOk) {
         gameObject.SetActive(true);
         transform.SetAsLastSibling();
 
-        titleText.text = titleString;
+        
 
         inputField.characterLimit = characterLimit;
         inputField.onValidateInput = (string text, int charIndex, char addedChar) => {
@@ -87,11 +87,11 @@ public class UI_InputWindow : MonoBehaviour {
     }
 
     public static void Show_Static(string titleString, string inputString, string validCharacters, int characterLimit, Action onCancel, Action<string> onOk) {
-        instance.Show(titleString, inputString, validCharacters, characterLimit, onCancel, onOk);
+        instance.Show(inputString, validCharacters, characterLimit, onCancel, onOk);
     }
 
     public static void Show_Static(string titleString, int defaultInt, Action onCancel, Action<int> onOk) {
-        instance.Show(titleString, defaultInt.ToString(), "0123456789-", 20, onCancel, 
+        instance.Show(defaultInt.ToString(), "0123456789-", 20, onCancel, 
             (string inputText) => {
                 // Try to Parse input string
                 if (int.TryParse(inputText, out int _i)) {
