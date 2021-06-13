@@ -41,10 +41,16 @@ public class HighscoreTable : MonoBehaviour {
             AddHighscoreEntry(785123, "CAT");
             AddHighscoreEntry(542024, "MAX");
             AddHighscoreEntry(68245, "AAA");
+            AddHighscoreEntry(542, "MAaaX");
+            AddHighscoreEntry(685, "AAAaa");
+            AddHighscoreEntry(4, "test1");
+            AddHighscoreEntry(6, "test2");
             // Reload
             jsonString = PlayerPrefs.GetString("highscoreTable");
             highscores = JsonUtility.FromJson<Highscores>(jsonString);
         }
+        
+
      
         RefreshHighscoreTable();
     }
@@ -55,17 +61,35 @@ public class HighscoreTable : MonoBehaviour {
 
         // Sort entry list by Score
         for (int i = 0; i < highscores.highscoreEntryList.Count; i++) {
+
             for (int j = i + 1; j < highscores.highscoreEntryList.Count; j++) {
+               
                 if (highscores.highscoreEntryList[j].score > highscores.highscoreEntryList[i].score) {
                     // Swap
                     HighscoreEntry tmp = highscores.highscoreEntryList[i];
+                    
                     highscores.highscoreEntryList[i] = highscores.highscoreEntryList[j];
                     highscores.highscoreEntryList[j] = tmp;
+                   
+
+
+
                 }
+               
             }
         }
 
-        if (highscoreEntryTransformList != null) {
+        for (int i = 0; i < highscores.highscoreEntryList.Count; i++)
+        {
+
+            if (i > 11)
+            {
+                HighscoreEntry tmp2 = highscores.highscoreEntryList[i];
+                highscores.highscoreEntryList.Remove(tmp2);
+            }
+        }
+
+            if (highscoreEntryTransformList != null) {
             foreach (Transform highscoreEntryTransform in highscoreEntryTransformList) {
                 Destroy(highscoreEntryTransform.gameObject);
             }
@@ -137,21 +161,47 @@ public class HighscoreTable : MonoBehaviour {
 
     public void AddHighscoreEntry(int score, string name) {
         // Create HighscoreEntry
+        var maxScoreBoardEntries = 10;
         HighscoreEntry highscoreEntry = new HighscoreEntry { score = score, name = name };
         
         // Load saved Highscores
         string jsonString = PlayerPrefs.GetString("highscoreTable");
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
 
-        if (highscores == null) {
+        /*
+        if (highscores == null)
+        {
             // There's no stored table, initialize
-            highscores = new Highscores() {
+            highscores = new Highscores()
+            {
                 highscoreEntryList = new List<HighscoreEntry>()
             };
         }
 
-        // Add new entry to Highscores
-        highscores.highscoreEntryList.Add(highscoreEntry);
+*/
+        bool scoreAdded = false;
+        for (int i = 0; i < highscores.highscoreEntryList.Count; i++)
+        {
+            if (highscoreEntry.score > highscores.highscoreEntryList[i].score)
+            {
+                highscores.highscoreEntryList.Insert(i, highscoreEntry);
+                scoreAdded = true;
+                break;
+            }
+        }
+
+
+       
+        if (!scoreAdded && highscores.highscoreEntryList.Count < maxScoreBoardEntries)
+        {
+            // Add new entry to Highscores
+            highscores.highscoreEntryList.Add(highscoreEntry);
+        }
+
+        if (highscores.highscoreEntryList.Count > maxScoreBoardEntries)
+        {
+            highscores.highscoreEntryList.RemoveRange(maxScoreBoardEntries, highscores.highscoreEntryList.Count - maxScoreBoardEntries);
+        }
 
         // Save updated Highscores
         string json = JsonUtility.ToJson(highscores);
