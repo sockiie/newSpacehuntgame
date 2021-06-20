@@ -28,14 +28,12 @@ public class AsteroidSpawner : MonoBehaviour
     private Vector3 end;
     private float currentZ = 0f;
 
-
-
     // Array of all the instantiated gameobjects
     private GameObject[] goSpawn;
 
     // with this boolean we can spawn 2 Waypoints at the same time
     private bool isFirstWPCycle = true;
-    private bool spawning = false;
+    
     //index for goSpawn[] after spawn of Waypoint 1
     private int asteroidIndexWP1 = 0;
     public int goAmount = 5000;
@@ -90,9 +88,7 @@ public class AsteroidSpawner : MonoBehaviour
     private void SpawnGameObjectsAlongWaypoint()
     {
         //current index of goSpawn[]
-
         int asteroidIndex;
-        spawning = true;
         if (isFirstWPCycle)
         {
             asteroidIndex = 0;
@@ -126,40 +122,18 @@ public class AsteroidSpawner : MonoBehaviour
             for(int i = 0; i < spawnAmountCycle; i++)
             {
                 Vector3 pos = new Vector3(UnityEngine.Random.Range(start.x - boundaryX, end.x + boundaryX), UnityEngine.Random.Range(start.y - boundaryY, end.y + boundaryY), currentZ);
-                var hitColliders = Physics.OverlapSphere(pos, (float)0.1);
-
-            if(hitColliders.Length > 0.1)
-                {
-                    spawning = false;
-
-                }else { 
                 var tmp = goSpawn[asteroidIndex];
                 tmp.transform.position = pos;
-
                 if (rotate)
                 {
                     Vector3 randomRotation = new Vector3(UnityEngine.Random.Range(-90, 90), UnityEngine.Random.Range(-90, 90), UnityEngine.Random.Range(-90, 90));
-
-                        if(asteroidPrefab.name == "Komet_v1") { 
-                        tmp.GetComponent<Asteroid>().setRotation(randomRotation);
-                        }
-
-                        if (asteroidPrefab.name == "Coin_final1")
-                        {
-                            tmp.GetComponent<Coin>().setRotation(randomRotation);
-                        }
-                        if (asteroidPrefab.name == "PowerUp_neu")
-                        {
-                            tmp.GetComponent<PowerUp>().setRotation(randomRotation);
-                        }
-                    }
-
+                    tmp.GetComponent<Asteroid>().setRotation(randomRotation);
+                }
 
                 float randomSize = UnityEngine.Random.Range(1, 3);
                 tmp.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
 
                 asteroidIndex++;
-                }
             }
 
             currentZ += spawnDistance;

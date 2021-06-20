@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    private Vector3 rotation;
-    public float rotationSpeed = 1f;
+   public Vector3 rotation = new Vector3(0,0,30);
     public GameObject explosionEffect;
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(rotation * rotationSpeed * Time.deltaTime);
+        transform.Rotate(rotation * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,12 +27,6 @@ public class Coin : MonoBehaviour
         }
 
     }
-
-    public void setRotation(Vector3 _rotation)
-    {
-        rotation = _rotation;
-    }
-
 
     private IEnumerator Explode()
     {

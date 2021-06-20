@@ -42,14 +42,8 @@ public class PlayerMovement : MonoBehaviour
 
         LocalMove(h*1.5f, v*1.5f, xSpeed);
 
-        if(dolly.m_Speed < 12)
-        {
-            dolly.m_Speed += Time.deltaTime / 10;
-        }
+        dolly.m_Speed += Time.deltaTime/5;
 
-        
-
-        Debug.Log("Geschwindigkeit:" + dolly.m_Speed);
     }
 
     void LocalMove(float x, float y, float speed)
