@@ -1,14 +1,4 @@
-﻿/* 
-    ------------------- Code Monkey -------------------
-
-    Thank you for downloading this package
-    I hope you find it useful in your projects
-    If you have any questions let me know
-    Cheers!
-
-               unitycodemonkey.com
-    --------------------------------------------------
- */
+﻿
 
 using System.Collections;
 using System.Collections.Generic;
@@ -28,23 +18,14 @@ public class HighscoreTable : MonoBehaviour {
 
         entryTemplate.gameObject.SetActive(false);
 
-        //PlayerPrefs.DeleteKey("highscoreTable");
+       
         string jsonString = PlayerPrefs.GetString("highscoreTable");
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
 
         if (highscores == null) {
             // There's no stored table, initialize
             Debug.Log("Initializing table with default values...");
-            AddHighscoreEntry(1000000, "CMK");
-            AddHighscoreEntry(897621, "JOE");
-            AddHighscoreEntry(872931, "DAV");
-            AddHighscoreEntry(785123, "CAT");
-            AddHighscoreEntry(542024, "MAX");
-            AddHighscoreEntry(68245, "AAA");
-            AddHighscoreEntry(542, "MAaaX");
-            AddHighscoreEntry(685, "AAAaa");
-            AddHighscoreEntry(4, "test1");
-            AddHighscoreEntry(6, "test2");
+            
             // Reload
             jsonString = PlayerPrefs.GetString("highscoreTable");
             highscores = JsonUtility.FromJson<Highscores>(jsonString);
@@ -168,7 +149,7 @@ public class HighscoreTable : MonoBehaviour {
         string jsonString = PlayerPrefs.GetString("highscoreTable");
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
 
-        /*
+      
         if (highscores == null)
         {
             // There's no stored table, initialize
@@ -178,7 +159,7 @@ public class HighscoreTable : MonoBehaviour {
             };
         }
 
-*/
+
         bool scoreAdded = false;
         for (int i = 0; i < highscores.highscoreEntryList.Count; i++)
         {
