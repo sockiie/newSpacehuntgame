@@ -4065,8 +4065,8 @@ MonoBehaviour:
   boundaryX: 2.5
   boundaryY: 1.5
   spawnDistance: 9
-  shouldDelaySpawn: 0
-  rotate: 0
+  shouldDelaySpawn: 1
+  rotate: 1
   spawnAmountCycle: 2
   goAmount: 50
 --- !u!4 &1951231671
@@ -4533,8 +4533,8 @@ MonoBehaviour:
   boundaryX: 2.5
   boundaryY: 1.5
   spawnDistance: 9
-  shouldDelaySpawn: 0
-  rotate: 0
+  shouldDelaySpawn: 1
+  rotate: 1
   spawnAmountCycle: 10
   goAmount: 2000
 --- !u!4 &2058144285
