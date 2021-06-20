@@ -28,6 +28,12 @@ public class Coin : MonoBehaviour
 
     }
 
+    public void setRotation(Vector3 _rotation)
+    {
+        rotation = _rotation;
+    }
+
+
     private IEnumerator Explode()
     {
         Debug.Log(transform.position);
