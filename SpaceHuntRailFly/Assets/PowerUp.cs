@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public Vector3 rotation = new Vector3(0, 0, 30);
+    private Vector3 rotation;
+    public float rotationSpeed = 1f;
     public GameObject explosionEffect;
 
     // Update is called once per frame
@@ -26,7 +27,9 @@ public class PowerUp : MonoBehaviour
 
         }
 
-    }
+      
+
+        }
 
     private IEnumerator Explode()
     {
@@ -39,4 +42,11 @@ public class PowerUp : MonoBehaviour
         }
         yield break;
     }
-}
+    public void setRotation(Vector3 _rotation)
+    {
+        rotation = _rotation;
+
+    }
+
+
+    }
