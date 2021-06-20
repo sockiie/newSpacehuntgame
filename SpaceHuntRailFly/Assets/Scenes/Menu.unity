@@ -557,7 +557,6 @@ GameObject:
   - component: {fileID: 181345641}
   - component: {fileID: 181345640}
   - component: {fileID: 181345639}
-  - component: {fileID: 181345643}
   - component: {fileID: 181345642}
   m_Layer: 5
   m_Name: GobackButton
@@ -710,19 +709,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &181345643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181345637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6046da91b114b6abdfc7f2515c5333, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 181345638}
 --- !u!1 &190875782
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,7 +875,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &233906578
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2965,7 +2951,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1319027543
 RectTransform:
   m_ObjectHideFlags: 0
