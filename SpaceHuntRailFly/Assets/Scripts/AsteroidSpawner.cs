@@ -139,9 +139,21 @@ public class AsteroidSpawner : MonoBehaviour
                 if (rotate)
                 {
                     Vector3 randomRotation = new Vector3(UnityEngine.Random.Range(-90, 90), UnityEngine.Random.Range(-90, 90), UnityEngine.Random.Range(-90, 90));
-                    tmp.GetComponent<Asteroid>().setRotation(randomRotation);
-                      
-                }
+
+                        if(asteroidPrefab.name == "Komet_v1") { 
+                        tmp.GetComponent<Asteroid>().setRotation(randomRotation);
+                        }
+
+                        if (asteroidPrefab.name == "Coin_final1")
+                        {
+                            tmp.GetComponent<Coin>().setRotation(randomRotation);
+                        }
+                        if (asteroidPrefab.name == "PowerUp_neu")
+                        {
+                            tmp.GetComponent<PowerUp>().setRotation(randomRotation);
+                        }
+                    }
+
 
                 float randomSize = UnityEngine.Random.Range(1, 3);
                 tmp.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
