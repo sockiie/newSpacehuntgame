@@ -18,7 +18,7 @@ public class HighscoreTable : MonoBehaviour {
 
         entryTemplate.gameObject.SetActive(false);
 
-       
+      
         string jsonString = PlayerPrefs.GetString("highscoreTable");
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
 
@@ -186,7 +186,9 @@ public class HighscoreTable : MonoBehaviour {
 
         // Save updated Highscores
         string json = JsonUtility.ToJson(highscores);
+       
         PlayerPrefs.SetString("highscoreTable", json);
+     
         PlayerPrefs.Save();
 
         RefreshHighscoreTable();
