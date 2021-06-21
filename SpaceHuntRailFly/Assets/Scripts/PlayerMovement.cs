@@ -14,8 +14,8 @@ public class PlayerMovement : MonoBehaviour
     public float RotationSpeed = 200f;
     private bool isReset;
     private bool isMoving = false;
-    private bool startRotation = false;
-    private float idleTime = 0f;
+
+
     public float resetSpeed = 2f;
     public CinemachineDollyCart dolly;
 

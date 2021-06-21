@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public Text pointsText;
     public GameObject gameoverText;
     public PlayerMovement player;
-    public CameraShake cameraShake;
     public GameObject explosionEffect;
     public GameObject playerShield;
     public GameObject[] health;

@@ -35,7 +35,6 @@ public class AsteroidSpawner : MonoBehaviour
 
     // with this boolean we can spawn 2 Waypoints at the same time
     private bool isFirstWPCycle = true;
-    private bool spawning = false;
     //index for goSpawn[] after spawn of Waypoint 1
     private int asteroidIndexWP1 = 0;
     public int goAmount = 5000;
@@ -92,7 +91,7 @@ public class AsteroidSpawner : MonoBehaviour
         //current index of goSpawn[]
 
         int asteroidIndex;
-        spawning = true;
+      
         if (isFirstWPCycle)
         {
             asteroidIndex = 0;
@@ -130,7 +129,7 @@ public class AsteroidSpawner : MonoBehaviour
 
             if(hitColliders.Length > 0.1)
                 {
-                    spawning = false;
+                  
 
                 }else { 
                 var tmp = goSpawn[asteroidIndex];
